@@ -138,6 +138,10 @@ class BayesianNN(pl.LightningModule):
     def training_step(self, batch, batch_idx):
         x, y = batch
         
+        # Flatten input if needed (for MNIST)
+        if len(x.shape) > 2:
+            x = x.view(x.size(0), -1)
+        
         # Forward pass
         logits = self.forward(x)
         
@@ -163,6 +167,10 @@ class BayesianNN(pl.LightningModule):
     def validation_step(self, batch, batch_idx):
         x, y = batch
         
+        # Flatten input if needed (for MNIST)
+        if len(x.shape) > 2:
+            x = x.view(x.size(0), -1)
+        
         # Get predictions with uncertainty
         mean_pred, uncertainty = self.predict_with_uncertainty(x)
         
@@ -182,6 +190,10 @@ class BayesianNN(pl.LightningModule):
         self.log('val_uncertainty', avg_uncertainty, prog_bar=True)
         
         return val_loss
+    
+    def test_step(self, batch, batch_idx):
+        # Same as validation step
+        return self.validation_step(batch, batch_idx)
     
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.learning_rate)

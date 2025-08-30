@@ -37,6 +37,9 @@ class MNISTDataModule(pl.LightningDataModule):
     
     def val_dataloader(self):
         return DataLoader(self.val_dataset, batch_size=self.batch_size)
+    
+    def test_dataloader(self):
+        return DataLoader(self.val_dataset, batch_size=self.batch_size)
 
 
 def visualize_uncertainty(model, dataloader, num_samples=5):
@@ -168,7 +171,7 @@ def main():
     
     # Initialize trainer
     trainer = pl.Trainer(
-        max_epochs=50,
+        max_epochs=5,  # Reduced for demo
         callbacks=[checkpoint_callback, early_stopping],
         accelerator='auto',
         log_every_n_steps=50

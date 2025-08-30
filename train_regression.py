@@ -69,7 +69,8 @@ def visualize_regression_uncertainty(model, data_module):
     x_test = np.linspace(-4, 4, 200)
     x_test_tensor = torch.from_numpy(x_test.astype(np.float32)).unsqueeze(1)
     
-    # Get predictions with uncertainty
+    # Get predictions with uncertainty (move to CPU for inference)
+    model = model.cpu()
     mean_pred, uncertainty = model.predict_with_uncertainty(x_test_tensor, num_samples=100)
     
     mean_pred = mean_pred.squeeze().numpy()

@@ -309,7 +309,7 @@ def main():
     
     # Initialize trainer
     trainer = pl.Trainer(
-        max_epochs=100,
+        max_epochs=10,  # Reduced for demo
         callbacks=[checkpoint_callback, early_stopping],
         accelerator='auto',
         log_every_n_steps=20
