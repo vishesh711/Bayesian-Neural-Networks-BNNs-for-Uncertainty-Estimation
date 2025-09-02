@@ -8,6 +8,9 @@ import torch
 import torch.nn.functional as F
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from models.bayesian_nn import BayesianNN
 from torch.utils.data import DataLoader, TensorDataset
 import pytorch_lightning as pl

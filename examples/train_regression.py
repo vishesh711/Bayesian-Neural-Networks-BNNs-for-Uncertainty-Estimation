@@ -5,6 +5,9 @@ import pytorch_lightning as pl
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from models.bayesian_nn import BayesianNN
 import seaborn as sns
 

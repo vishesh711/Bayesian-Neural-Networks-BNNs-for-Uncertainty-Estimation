@@ -9,6 +9,9 @@ import pandas as pd
 from sklearn.datasets import make_classification
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from models.bayesian_nn import BayesianNN
 import seaborn as sns
 

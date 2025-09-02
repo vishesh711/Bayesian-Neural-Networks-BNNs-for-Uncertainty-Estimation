@@ -111,7 +111,7 @@ def main():
         print("Shows how BNNs provide confidence estimates for digit classification.")
         print("Key insight: Model is less confident on ambiguous/corrupted digits.")
         
-        if run_command("python train_mnist.py", "Training MNIST Bayesian Classifier"):
+        if run_command("python examples/train_mnist.py", "Training MNIST Bayesian Classifier"):
             success_count += 1
             print("📊 Generated: mnist_uncertainty_visualization.png")
             print("📊 Generated: uncertainty_vs_accuracy.png")
@@ -124,7 +124,7 @@ def main():
         print("Shows how BNNs provide uncertainty estimates for continuous predictions.")
         print("Key insight: Uncertainty increases outside training data region.")
         
-        if run_command("python train_regression.py", "Training Regression with Uncertainty"):
+        if run_command("python examples/train_regression.py", "Training Regression with Uncertainty"):
             success_count += 1
             print("📊 Generated: regression_uncertainty.png")
             print("📊 Generated: uncertainty_vs_input.png")
@@ -137,7 +137,7 @@ def main():
         print("Shows how BNNs enable safe AI in healthcare by flagging uncertain cases.")
         print("Key insight: High uncertainty cases should be reviewed by doctors.")
         
-        if run_command("python train_medical.py", "Training Medical Bayesian Classifier"):
+        if run_command("python examples/train_medical.py", "Training Medical Bayesian Classifier"):
             success_count += 1
             print("📊 Generated: medical_analysis.png")
     

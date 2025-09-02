@@ -23,42 +23,45 @@ help:
 # Install dependencies
 install:
 	@echo "📦 Installing dependencies..."
-	pip install -r requirements.txt
+	pip install -r config/requirements.txt
 	@echo "✅ Installation complete!"
 
 # Run tests
 test:
 	@echo "🧪 Running setup validation tests..."
-	python test_setup.py
+	python scripts/test_setup.py
 
 # Run complete demo
 demo:
 	@echo "🚀 Running complete Bayesian Neural Networks demo..."
-	python demo.py
+	python scripts/demo.py
 
 # Individual training scripts
 mnist:
 	@echo "🔢 Training MNIST classification with uncertainty..."
-	python train_mnist.py
+	python examples/train_mnist.py
 
 regression:
 	@echo "📈 Training regression with uncertainty bands..."
-	python train_regression.py
+	python examples/train_regression.py
 
 medical:
 	@echo "🏥 Training medical classification for clinical decisions..."
-	python train_medical.py
+	python examples/train_medical.py
 
 # Clean up generated files
 clean:
 	@echo "🧹 Cleaning up generated files..."
-	rm -f *.png
+	rm -f outputs/*.png
 	rm -rf lightning_logs/
 	rm -rf checkpoints/
 	rm -rf data/
 	rm -rf __pycache__/
 	rm -rf models/__pycache__/
 	rm -rf utils/__pycache__/
+	rm -rf examples/__pycache__/
+	rm -rf scripts/__pycache__/
+	rm -rf config/__pycache__/
 	find . -name "*.pyc" -delete
 	find . -name "*.pyo" -delete
 	@echo "✅ Cleanup complete!"
